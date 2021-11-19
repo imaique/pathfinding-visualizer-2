@@ -6,6 +6,16 @@ $wall: #616163;
 $start: #44ffd2;
 $end: #ea7317;
 */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  text-align: center;
+}
+
+.visualize {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
 $unvisited: transparent;
 $visited: #118ab2;
@@ -16,6 +26,7 @@ $end: #ef476f;
 
 table {
   border-collapse: collapse;
+  margin: auto;
 }
 .node {
   border: 1px solid #2c4251;
@@ -44,17 +55,36 @@ table {
     opacity: 0.75;
   }
 }
+.path-select {
+  display: flex;
+  width: 100%;
+  font-weight: bold;
+  background-color: #f1faee;
+}
+.select-title,
+.path-choice {
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.select-title {
+  color: #e0eff5;
+  width: 300px;
+  pointer-events: none;
+  background-color: #1b9aaa;
+}
+
 .path-choices {
   width: 100%;
   display: flex;
 }
 .path-choice {
+  color: #073b4c;
   cursor: pointer;
-  padding: 10px;
   position: relative;
   width: 100%;
-  text-align: center;
-  background-color: #f1faee;
+  margin-left: 10px;
 
   &.selected {
     background-color: $start;
