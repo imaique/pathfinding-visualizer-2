@@ -10,18 +10,18 @@ const algorithms = [
   { name: 'A* Algorithm', function: astar },
   { name: "Dijkstra's algorithm", function: djikstra },
   { name: 'Greedy Best-First Search', function: greedy },
-  { name: 'Breadth First Search', function: bfs },
-  { name: 'Depth First Search', function: dfs },
+  { name: 'Breadth-First Search', function: bfs },
+  { name: 'Depth-First Search', function: dfs },
 ];
 
 document.getElementById('visualize').addEventListener('click', visualize);
 
-const board = new Board(100, 100);
+const board = new Board(60, 30);
 const boardContainer = document.getElementById('container');
 boardContainer.appendChild(board.DOMElement);
 
 const pathChoices = new PathAlgorithmSelect(algorithms);
-const pathfindingSelectElement = document.getElementById('pathfinding-select');
+const pathfindingSelectElement = document.getElementById('path-select');
 pathfindingSelectElement.appendChild(pathChoices.DOMElement);
 
 function visualize() {
