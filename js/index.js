@@ -4,43 +4,35 @@ import { greedy } from './algorithms/greedy.js';
 import { djikstra } from './algorithms/dijkstra.js';
 import { bfs } from './algorithms/bfs.js';
 import { dfs } from './algorithms/dfs.js';
+import PathAlgorithmSelect from './classes/PathAlgorithmSelect.js';
 
 const algorithms = [
-  { name: 'A* Algorithm', algorithm: astar },
-  { name: "Dijkstra's algorithm", algorithm: djikstra },
-  { name: 'Greedy Best-First Search', algorithm: greedy },
-  { name: 'Breadth First Search', algorithm: bfs },
-  { name: 'Depth First Search', algorithm: dfs },
+  { name: 'A* Algorithm', function: astar },
+  { name: "Dijkstra's algorithm", function: djikstra },
+  { name: 'Greedy Best-First Search', function: greedy },
+  { name: 'Breadth First Search', function: bfs },
+  { name: 'Depth First Search', function: dfs },
 ];
 const boardContainer = document.getElementById('container');
 document.getElementById('visualize').addEventListener('click', visualize);
 
 const board = new Board(60, 60, boardContainer);
-let currentAlgorithm = algorithms[0];
-
-const pathfindingChoicesElement = document.createElement('div');
-for (let algorithm of algorithms) {
-  const pathfindingAlgorithmElement = document.createElement('div');
-  pathfindingAlgorithmElement.innerHTML = algorithm.name;
-  pathfindingAlgorithmElement.className =
-    'path-choice' + (algorithm === currentAlgorithm ? ' selected' : '');
-  pathfindingAlgorithmElement.addEventListener('click', () => {
-    pathfindingAlgorithmElement.className = 'path-choice selected';
-  });
-  pathfindingChoicesElement.appendChild(pathfindingAlgorithmElement);
-}
+const pathfindingSelectElement = document.getElementById('pathfinding-select');
+const pathChoices = new PathAlgorithmSelect(algorithms);
+pathfindingSelectElement.appendChild(pathChoices.DOMElement);
 
 function visualize() {
   const start = { y: board.startNode.y, x: board.startNode.x };
   const end = { y: board.endNode.y, x: board.endNode.x };
+  const pathfindingAlgorithm = pathChoices.currentSelection;
   console.log(start);
   console.log(end);
   console.log(board.grid);
-  const [visitedOrder, takenPath] = currentAlgorithm.algorithm(
+  const [visitedOrder, takenPath] = pathfindingAlgorithm(
     start,
     end,
     board.grid,
-    false
+    true
   );
   board.visualize(visitedOrder, takenPath);
 }
