@@ -4,7 +4,7 @@ import {
   isValid,
   getNeighborIncrements,
 } from './shared.js';
-import PriorityQueue from '../data_structures/PriorityQueue.js';
+import PriorityQueue from '../../data_structures/PriorityQueue.js';
 
 export const greedy = (start, end, grid, isDiagonalNeighbors) => {
   const neighbors = getNeighborIncrements(isDiagonalNeighbors);

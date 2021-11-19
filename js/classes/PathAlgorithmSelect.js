@@ -25,10 +25,6 @@ class PathAlgorithmSelect {
   select(algorithm) {
     const element = this.map.get(algorithm);
     const previousElement = this.map.get(this.currentSelection);
-    console.log(this.map);
-    console.log(element);
-    console.log(previousElement);
-
     this.currentSelection = algorithm;
     element.className = 'path-choice selected';
     previousElement.className = 'path-choice';

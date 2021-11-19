@@ -1,24 +1,24 @@
-import Stack from '../data_structures/Stack.js';
+import Queue from '../../data_structures/Queue.js';
 import { getPath, isValid, getNeighborIncrements } from './shared.js';
 
-export const dfs = (start, end, grid, isDiagonalNeighbors) => {
+export const bfs = (start, end, grid, isDiagonalNeighbors) => {
   const neighbors = getNeighborIncrements(isDiagonalNeighbors);
 
-  const stack = new Stack();
+  const queue = new Queue();
   const visitedOrder = [];
   const visited = new Set();
 
-  stack.push(start);
+  queue.enqueue(start);
   visited.add(`${start.y}_${start.x}`);
 
-  while (!stack.isEmpty()) {
-    const current = stack.pop();
+  while (!queue.isEmpty()) {
+    const current = queue.dequeue();
     if (current.x === end.x && current.y === end.y) {
       let path = getPath(current);
       return [visitedOrder, path];
     }
+
     visitedOrder.push(current);
-    visited.add(`${current.y}_${current.x}`);
 
     for (let increments of neighbors) {
       const neighbor = {
@@ -27,7 +27,8 @@ export const dfs = (start, end, grid, isDiagonalNeighbors) => {
       };
       if (isValid(neighbor.x, neighbor.y, grid, visited)) {
         neighbor.prev = current;
-        stack.push(neighbor);
+        queue.enqueue(neighbor);
+        visited.add(`${neighbor.y}_${neighbor.x}`);
       }
     }
   }

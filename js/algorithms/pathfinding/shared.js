@@ -1,12 +1,12 @@
-import NodeStates from '../enums/NodeStates.js';
-
+import NodeStates from '../../enums/NodeStates.js';
+// if visited is undefined, then you do not check if the current coordinates are in it.
 export const isValid = (x, y, grid, visited) => {
   return (
     x >= 0 &&
     x < grid[0].length &&
     y >= 0 &&
     y < grid.length &&
-    !visited.has(`${y}_${x}`) &&
+    (visited === undefined || !visited.has(`${y}_${x}`)) &&
     grid[y][x].nodeState !== NodeStates.wall
   );
 };

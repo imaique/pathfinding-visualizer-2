@@ -2,7 +2,7 @@ import NodeStates from '../enums/NodeStates.js';
 import Node from './Node.js';
 
 class Board {
-  constructor(width, height, container) {
+  constructor(width, height) {
     this.draggedState = null;
     this.revertPreviousNode = null;
     this.isAnimating = false;
@@ -13,7 +13,7 @@ class Board {
     });
     const [grid, tableDOM] = this.initializeGrid(width, height);
     this.grid = grid;
-    container.appendChild(tableDOM);
+    this.DOMElement = tableDOM;
   }
 
   async visualize(visitedOrder, takenPath) {
@@ -46,7 +46,7 @@ class Board {
           clearInterval(interval);
           resolve();
         }
-      }, 0.3);
+      }, 1);
     });
   }
 
