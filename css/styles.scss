@@ -1,0 +1,50 @@
+$unvisited: white;
+$visited: aqua;
+$path: yellow;
+$wall: darkblue;
+$start: green;
+$end: red;
+
+table {
+  border-collapse: collapse;
+}
+.node {
+  border: 1px solid black;
+  height: 1.5em;
+  width: 1.5em;
+
+  &.visited {
+    background-color: $visited;
+  }
+  &.path {
+    background-color: $path;
+  }
+
+  &.wall {
+    background-color: $wall;
+  }
+  &.start {
+    background-color: $start;
+  }
+
+  &.end {
+    background-color: $end;
+  }
+
+  &:hover {
+    opacity: 0.75;
+  }
+}
+.path-choices {
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+}
+.path-choice {
+  position: relative;
+  width: 100%;
+
+  &.selected {
+    background-color: blueviolet;
+  }
+}

@@ -1,0 +1,51 @@
+table {
+  border-collapse: collapse;
+}
+
+.node {
+  border: 1px solid black;
+  height: 1.5em;
+  width: 1.5em;
+}
+
+.node.visited {
+  background-color: aqua;
+}
+
+.node.path {
+  background-color: yellow;
+}
+
+.node.wall {
+  background-color: darkblue;
+}
+
+.node.start {
+  background-color: green;
+}
+
+.node.end {
+  background-color: red;
+}
+
+.node:hover {
+  opacity: 0.75;
+}
+
+.path-choices {
+  cursor: pointer;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.path-choice {
+  position: relative;
+  width: 100%;
+}
+
+.path-choice.selected {
+  background-color: blueviolet;
+}
+/*# sourceMappingURL=styles.css.map */
