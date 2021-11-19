@@ -1,15 +1,24 @@
+/*
 $unvisited: white;
-$visited: aqua;
-$path: yellow;
-$wall: darkblue;
-$start: green;
-$end: red;
+$visited: #788bff;
+$path: #fec601;
+$wall: #616163;
+$start: #44ffd2;
+$end: #ea7317;
+*/
+
+$unvisited: transparent;
+$visited: #118ab2;
+$path: #ffd166;
+$wall: #616163;
+$start: #06d6a0;
+$end: #ef476f;
 
 table {
   border-collapse: collapse;
 }
 .node {
-  border: 1px solid black;
+  border: 1px solid #2c4251;
   height: 1.5em;
   width: 1.5em;
 
@@ -36,15 +45,18 @@ table {
   }
 }
 .path-choices {
-  cursor: pointer;
   width: 100%;
   display: flex;
 }
 .path-choice {
+  cursor: pointer;
+  padding: 10px;
   position: relative;
   width: 100%;
+  text-align: center;
+  background-color: #f1faee;
 
   &.selected {
-    background-color: blueviolet;
+    background-color: $start;
   }
 }

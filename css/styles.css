@@ -1,31 +1,39 @@
+/*
+$unvisited: white;
+$visited: #788bff;
+$path: #fec601;
+$wall: #616163;
+$start: #44ffd2;
+$end: #ea7317;
+*/
 table {
   border-collapse: collapse;
 }
 
 .node {
-  border: 1px solid black;
+  border: 1px solid #2c4251;
   height: 1.5em;
   width: 1.5em;
 }
 
 .node.visited {
-  background-color: aqua;
+  background-color: #118ab2;
 }
 
 .node.path {
-  background-color: yellow;
+  background-color: #ffd166;
 }
 
 .node.wall {
-  background-color: darkblue;
+  background-color: #616163;
 }
 
 .node.start {
-  background-color: green;
+  background-color: #06d6a0;
 }
 
 .node.end {
-  background-color: red;
+  background-color: #ef476f;
 }
 
 .node:hover {
@@ -33,7 +41,6 @@ table {
 }
 
 .path-choices {
-  cursor: pointer;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -41,11 +48,15 @@ table {
 }
 
 .path-choice {
+  cursor: pointer;
+  padding: 10px;
   position: relative;
   width: 100%;
+  text-align: center;
+  background-color: #f1faee;
 }
 
 .path-choice.selected {
-  background-color: blueviolet;
+  background-color: #06d6a0;
 }
 /*# sourceMappingURL=styles.css.map */
