@@ -9,10 +9,10 @@ class PathAlgorithmSelect {
     for (let algorithm of algorithms) {
       const pathfindingAlgorithmElement = document.createElement('div');
       this.map.set(algorithm.function, pathfindingAlgorithmElement);
-      pathfindingAlgorithmElement.innerHTML = algorithm.name;
-      pathfindingAlgorithmElement.className =
-        'path-choice' +
-        (algorithm.function === this.currentSelection ? ' selected' : '');
+      pathfindingAlgorithmElement.textContent = algorithm.name;
+      pathfindingAlgorithmElement.classList = 'path-choice';
+      if (algorithm.function === this.currentSelection)
+        pathfindingAlgorithmElement.classList.add('selected');
       pathfindingAlgorithmElement.addEventListener(
         'click',
         this.select.bind(this, algorithm.function)
@@ -23,11 +23,12 @@ class PathAlgorithmSelect {
   }
 
   select(algorithm) {
+    if (algorithm === this.currentSelection) return;
     const element = this.map.get(algorithm);
     const previousElement = this.map.get(this.currentSelection);
     this.currentSelection = algorithm;
-    element.className = 'path-choice selected';
-    previousElement.className = 'path-choice';
+    element.classList.add('selected');
+    previousElement.classList.remove('selected');
   }
 }
 
