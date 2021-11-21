@@ -24,6 +24,8 @@ const pathChoices = new PathAlgorithmSelect(algorithms);
 const pathfindingSelectElement = document.getElementById('path-select');
 pathfindingSelectElement.appendChild(pathChoices.DOMElement);
 
+const mazeChoices = new MazeAlgorithmSelect();
+
 function visualize() {
   const start = { y: board.startNode.y, x: board.startNode.x };
   const end = { y: board.endNode.y, x: board.endNode.x };
