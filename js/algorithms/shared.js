@@ -89,3 +89,12 @@ export const getMazeNeighbor = (increments, current) => {
     wall: { x: current.x + increments.x, y: current.y + increments.y },
   };
 };
+
+export const nodeIsOuterBoard = (node, heigth, width) => {
+  return (
+    node.x === 0 ||
+    node.y === 0 ||
+    node.y === heigth - 1 ||
+    node.x === width - 1
+  );
+};
