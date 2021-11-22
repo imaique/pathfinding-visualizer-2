@@ -1,6 +1,12 @@
 import Stack from '../../data_structures/Stack.js';
 import NodeStates from '../../enums/NodeStates.js';
-import { getNeighborIncrements, isValid, shuffle } from '../shared.js';
+import {
+  getNeighborIncrements,
+  isValid,
+  shuffle,
+  getKey,
+  getMazeNeighbor,
+} from '../shared.js';
 
 export const randomDFS = (start, end, grid) => {
   const neighbors = getNeighborIncrements(false);
@@ -12,17 +18,17 @@ export const randomDFS = (start, end, grid) => {
 
   while (!stack.isEmpty()) {
     const current = stack.pop();
-    if (visited.has(`${current.y}_${current.x}`)) continue;
-    visited.add(`${current.y}_${current.x}`);
+
+    const currentKey = getKey(current);
+    if (visited.has(currentKey)) continue;
+    visited.add(currentKey);
+
     if (current.wall !== undefined) visitedOrder.push(current.wall);
     visitedOrder.push(current);
+
     let possibilities = [];
     for (let increments of neighbors) {
-      const neighbor = {
-        x: current.x + increments.x * 2,
-        y: current.y + increments.y * 2,
-        wall: { x: current.x + increments.x, y: current.y + increments.y },
-      };
+      const neighbor = getMazeNeighbor(increments, current);
       if (isValid(neighbor.x, neighbor.y, grid, visited, NodeStates.unvisited))
         possibilities.push(neighbor);
     }

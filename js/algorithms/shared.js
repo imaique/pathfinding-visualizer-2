@@ -48,7 +48,7 @@ export const isDiagonal = (node1, node2) => {
   return node1.x !== node2.x && node1.y !== node2.y;
 };
 
-export function shuffle(array) {
+export const shuffle = (array) => {
   var m = array.length,
     t,
     i;
@@ -65,4 +65,27 @@ export function shuffle(array) {
   }
 
   return array;
-}
+};
+
+export const isSameCoordinates = (node1, node2) => {
+  return node1.x === node2.x && node1.y === node2.y;
+};
+
+export const getKey = (node) => {
+  return `${node.y}_${node.x}`;
+};
+
+export const getCurrentNeighbor = (increments, current) => {
+  return {
+    x: current.x + increments.x,
+    y: current.y + increments.y,
+  };
+};
+
+export const getMazeNeighbor = (increments, current) => {
+  return {
+    x: current.x + increments.x * 2,
+    y: current.y + increments.y * 2,
+    wall: { x: current.x + increments.x, y: current.y + increments.y },
+  };
+};

@@ -3,6 +3,9 @@ import {
   getPath,
   isValid,
   getNeighborIncrements,
+  getCurrentNeighbor,
+  getKey,
+  isSameCoordinates,
 } from '../shared.js';
 import PriorityQueue from '../../data_structures/PriorityQueue.js';
 
@@ -13,21 +16,18 @@ export const djikstra = (start, end, grid, isDiagonalNeighbors) => {
   const visited = new Map();
   start.cost = 0;
   queue.push(start, 0);
-  visited.set(`${start.y}_${start.x}`, 0);
+  visited.set(getKey(current), 0);
 
   while (!(queue.length === 0)) {
     const current = queue.pop();
-    if (current.x === end.x && current.y === end.y) {
+    if (isSameCoordinates(current, end)) {
       let path = getPath(current);
       return [visitedOrder, path];
     }
     visitedOrder.push(current);
 
     for (let increments of neighbors) {
-      const neighbor = {
-        x: current.x + increments.x,
-        y: current.y + increments.y,
-      };
+      const neighbor = getCurrentNeighbor(increments, current);
       if (isValid(neighbor.x, neighbor.y, grid, visited)) {
         neighbor.prev = current;
         // if diagonal, increase the cost by 1 to prevent weird paths;
@@ -36,7 +36,7 @@ export const djikstra = (start, end, grid, isDiagonalNeighbors) => {
           current.cost +
           grid[neighbor.y][neighbor.x].weight *
             (isDiagonal(current, neighbor) ? Math.SQRT2 : 1);
-        const key = `${neighbor.y}_${neighbor.x}`;
+        const key = getKey(neighbor);
         if (!visited.has(key) || visited.get(key) > neighbor.cost) {
           queue.push(neighbor, neighbor.cost);
           visited.set(key, neighbor.cost);

@@ -1,5 +1,12 @@
 import Queue from '../../data_structures/Queue.js';
-import { getPath, isValid, getNeighborIncrements } from '../shared.js';
+import {
+  getPath,
+  isValid,
+  getNeighborIncrements,
+  getCurrentNeighbor,
+  getKey,
+  isSameCoordinates,
+} from '../shared.js';
 
 export const bfs = (start, end, grid, isDiagonalNeighbors) => {
   const neighbors = getNeighborIncrements(isDiagonalNeighbors);
@@ -9,11 +16,11 @@ export const bfs = (start, end, grid, isDiagonalNeighbors) => {
   const visited = new Set();
 
   queue.enqueue(start);
-  visited.add(`${start.y}_${start.x}`);
+  visited.add(getKey(start));
 
   while (!queue.isEmpty()) {
     const current = queue.dequeue();
-    if (current.x === end.x && current.y === end.y) {
+    if (isSameCoordinates(current, end)) {
       let path = getPath(current);
       return [visitedOrder, path];
     }
@@ -21,14 +28,11 @@ export const bfs = (start, end, grid, isDiagonalNeighbors) => {
     visitedOrder.push(current);
 
     for (let increments of neighbors) {
-      const neighbor = {
-        x: current.x + increments.x,
-        y: current.y + increments.y,
-      };
+      const neighbor = getCurrentNeighbor(increments, current);
       if (isValid(neighbor.x, neighbor.y, grid, visited)) {
         neighbor.prev = current;
         queue.enqueue(neighbor);
-        visited.add(`${neighbor.y}_${neighbor.x}`);
+        visited.add(getKey(neighbor));
       }
     }
   }
