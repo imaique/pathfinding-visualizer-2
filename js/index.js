@@ -32,7 +32,7 @@ const mazeChoices = new MazeAlgorithmSelect();
 function generate() {
   const start = { y: board.startNode.y, x: board.startNode.x };
   const end = { y: board.endNode.y, x: board.endNode.x };
-  board.setBoardToWalls();
+  board.setBoardToState(NodeStates.wall);
   const visitedOrder = randomDFS(start, end, board.grid);
   board.visualizeList(visitedOrder, NodeStates.unvisited);
 }

@@ -54,15 +54,15 @@ class Board {
     });
   }
 
-  setBoardToWalls() {
+  setBoardToState(state) {
     for (let row of this.grid) {
       for (let node of row) {
         if (
-          node.nodeState !== NodeStates.wall &&
+          node.nodeState !== state &&
           node.nodeState !== NodeStates.start &&
           node.nodeState !== NodeStates.end
         )
-          node.setNodeState(NodeStates.wall);
+          node.setNodeState(state);
       }
     }
   }
