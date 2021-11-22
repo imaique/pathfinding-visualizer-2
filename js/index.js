@@ -5,6 +5,8 @@ import { djikstra } from './algorithms/pathfinding/dijkstra.js';
 import { bfs } from './algorithms/pathfinding/bfs.js';
 import { dfs } from './algorithms/pathfinding/dfs.js';
 import PathAlgorithmSelect from './classes/PathAlgorithmSelect.js';
+import { randomDFS } from './algorithms/maze-generating/randomDFS.js';
+import NodeStates from './enums/NodeStates.js';
 
 const algorithms = [
   { name: 'A* Algorithm', function: astar },
@@ -15,8 +17,9 @@ const algorithms = [
 ];
 
 document.getElementById('visualize').addEventListener('click', visualize);
+document.getElementById('maze').addEventListener('click', generate);
 
-const board = new Board(60, 30);
+const board = new Board(61, 27);
 const boardContainer = document.getElementById('container');
 boardContainer.appendChild(board.DOMElement);
 
@@ -26,6 +29,14 @@ pathfindingSelectElement.appendChild(pathChoices.DOMElement);
 
 const mazeChoices = new MazeAlgorithmSelect();
 
+function generate() {
+  const start = { y: board.startNode.y, x: board.startNode.x };
+  const end = { y: board.endNode.y, x: board.endNode.x };
+  board.setBoardToWalls();
+  const visitedOrder = randomDFS(start, end, board.grid);
+  board.visualizeList(visitedOrder, NodeStates.unvisited);
+}
+
 function visualize() {
   const start = { y: board.startNode.y, x: board.startNode.x };
   const end = { y: board.endNode.y, x: board.endNode.x };
@@ -34,7 +45,7 @@ function visualize() {
     start,
     end,
     board.grid,
-    true
+    false
   );
   board.visualize(visitedOrder, takenPath);
 }
