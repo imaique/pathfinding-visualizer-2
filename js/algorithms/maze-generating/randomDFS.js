@@ -6,9 +6,10 @@ import {
   shuffle,
   getKey,
   getMazeNeighbor,
+  nodeIsOuterBoard,
 } from '../shared.js';
 
-export const randomDFS = (start, end, grid) => {
+export const randomDFS = (start, grid) => {
   const neighbors = getNeighborIncrements(false);
   const stack = new Stack();
   const visited = new Set();
@@ -34,7 +35,8 @@ export const randomDFS = (start, end, grid) => {
     }
     possibilities = shuffle(possibilities);
     for (let neighbor of possibilities) {
-      stack.push(neighbor);
+      if (!nodeIsOuterBoard(neighbor, grid.length, grid[0].length))
+        stack.push(neighbor);
     }
   }
 
