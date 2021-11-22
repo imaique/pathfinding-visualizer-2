@@ -1,5 +1,5 @@
 import Stack from '../../data_structures/Stack.js';
-import { getPath, isValid, getNeighborIncrements } from './shared.js';
+import { getPath, isValid, getNeighborIncrements } from '../shared.js';
 
 export const dfs = (start, end, grid, isDiagonalNeighbors) => {
   const neighbors = getNeighborIncrements(false);

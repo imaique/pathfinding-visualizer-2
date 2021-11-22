@@ -3,7 +3,7 @@ import {
   getPath,
   isValid,
   getNeighborIncrements,
-} from './shared.js';
+} from '../shared.js';
 import PriorityQueue from '../../data_structures/PriorityQueue.js';
 
 export const astar = (start, end, grid, isDiagonalNeighbors) => {

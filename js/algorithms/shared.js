@@ -1,13 +1,13 @@
-import NodeStates from '../../enums/NodeStates.js';
+import NodeStates from '../enums/NodeStates.js';
 // if visited is undefined, then you do not check if the current coordinates are in it.
-export const isValid = (x, y, grid, visited) => {
+export const isValid = (x, y, grid, visited, state = NodeStates.wall) => {
   return (
     x >= 0 &&
     x < grid[0].length &&
     y >= 0 &&
     y < grid.length &&
     (visited === undefined || !visited.has(`${y}_${x}`)) &&
-    grid[y][x].nodeState !== NodeStates.wall
+    grid[y][x].nodeState !== state
   );
 };
 
@@ -47,3 +47,22 @@ export const getPath = (lastNode) => {
 export const isDiagonal = (node1, node2) => {
   return node1.x !== node2.x && node1.y !== node2.y;
 };
+
+export function shuffle(array) {
+  var m = array.length,
+    t,
+    i;
+
+  // While there remain elements to shuffle…
+  while (m) {
+    // Pick a remaining element…
+    i = Math.floor(Math.random() * m--);
+
+    // And swap it with the current element.
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
+  }
+
+  return array;
+}

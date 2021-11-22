@@ -1,5 +1,5 @@
 import Queue from '../../data_structures/Queue.js';
-import { getPath, isValid, getNeighborIncrements } from './shared.js';
+import { getPath, isValid, getNeighborIncrements } from '../shared.js';
 
 export const bfs = (start, end, grid, isDiagonalNeighbors) => {
   const neighbors = getNeighborIncrements(isDiagonalNeighbors);
