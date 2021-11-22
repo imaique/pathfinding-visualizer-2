@@ -31,6 +31,10 @@ class Board {
   visualizeList(visitedOrder, state) {
     return new Promise((resolve) => {
       let index = 0;
+      if (visitedOrder.length == 0) {
+        resolve();
+        return;
+      }
       const interval = setInterval(async () => {
         const x = visitedOrder[index].x;
         const y = visitedOrder[index].y;
@@ -48,6 +52,19 @@ class Board {
         }
       }, 1);
     });
+  }
+
+  setBoardToWalls() {
+    for (let row of this.grid) {
+      for (let node of row) {
+        if (
+          node.nodeState !== NodeStates.wall &&
+          node.nodeState !== NodeStates.start &&
+          node.nodeState !== NodeStates.end
+        )
+          node.setNodeState(NodeStates.wall);
+      }
+    }
   }
 
   cleanUpVisitedNodes() {
