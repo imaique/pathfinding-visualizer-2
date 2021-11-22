@@ -4,7 +4,7 @@ This project was heavily inspired by [Clement Mihailescu's Pathfinding Visualize
 
 ## Available Algorithms
 
-**A* Algorithm**  
+**A\* Algorithm**  
 **Dijkstra's algorithm**  
 **Greedy Best-First Search**  
 **Breadth-First Search (BFS)**  
