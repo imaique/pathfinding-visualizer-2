@@ -50,7 +50,7 @@ class Board {
           clearInterval(interval);
           resolve();
         }
-      }, 1);
+      }, 10);
     });
   }
 
