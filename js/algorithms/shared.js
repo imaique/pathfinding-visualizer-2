@@ -2,12 +2,24 @@ import NodeStates from '../enums/NodeStates.js';
 // if visited is undefined, then you do not check if the current coordinates are in it.
 export const isValid = (x, y, grid, visited, state = NodeStates.wall) => {
   return (
-    x >= 0 &&
-    x < grid[0].length &&
-    y >= 0 &&
-    y < grid.length &&
+    isWithinBounds(x, y, grid) &&
     (visited === undefined || !visited.has(`${y}_${x}`)) &&
     grid[y][x].nodeState !== state
+  );
+};
+export const isValidWall = (node, grid) => {
+  const x = node.x;
+  const y = node.y;
+  return isWithinBounds(x, y, grid) && !isOuterBoard(x, y, grid);
+};
+
+const isWithinBounds = (x, y, grid) => {
+  return x >= 0 && x < grid[0].length && y >= 0 && y < grid.length;
+};
+
+const isOuterBoard = (x, y, grid) => {
+  return (
+    x === 0 || y === 0 || y === grid.length - 1 || x === grid[0].length - 1
   );
 };
 
@@ -88,13 +100,4 @@ export const getMazeNeighbor = (increments, current) => {
     y: current.y + increments.y * 2,
     wall: { x: current.x + increments.x, y: current.y + increments.y },
   };
-};
-
-export const nodeIsOuterBoard = (node, heigth, width) => {
-  return (
-    node.x === 0 ||
-    node.y === 0 ||
-    node.y === heigth - 1 ||
-    node.x === width - 1
-  );
 };
