@@ -1,12 +1,10 @@
 import Stack from '../../data_structures/Stack.js';
-import NodeStates from '../../enums/NodeStates.js';
 import {
   getNeighborIncrements,
-  isValid,
   shuffle,
   getKey,
   getMazeNeighbor,
-  nodeIsOuterBoard,
+  isValidWall,
 } from '../shared.js';
 
 export const randomDFS = (start, grid) => {
@@ -30,13 +28,11 @@ export const randomDFS = (start, grid) => {
     let possibilities = [];
     for (let increments of neighbors) {
       const neighbor = getMazeNeighbor(increments, current);
-      if (isValid(neighbor.x, neighbor.y, grid, visited, NodeStates.unvisited))
-        possibilities.push(neighbor);
+      if (isValidWall(neighbor, grid)) possibilities.push(neighbor);
     }
     possibilities = shuffle(possibilities);
     for (let neighbor of possibilities) {
-      if (!nodeIsOuterBoard(neighbor, grid.length, grid[0].length))
-        stack.push(neighbor);
+      stack.push(neighbor);
     }
   }
 
