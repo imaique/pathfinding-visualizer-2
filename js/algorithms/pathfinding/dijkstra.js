@@ -16,7 +16,7 @@ export const djikstra = (start, end, grid, isDiagonalNeighbors) => {
   const visited = new Map();
   start.cost = 0;
   queue.push(start, 0);
-  visited.set(getKey(current), 0);
+  visited.set(getKey(start), 0);
 
   while (!(queue.length === 0)) {
     const current = queue.pop();
