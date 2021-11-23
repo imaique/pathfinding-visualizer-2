@@ -1,16 +1,16 @@
 class PathAlgorithmSelect {
-  constructor(algorithms) {
+  constructor(algorithms, groupClass, choiceClass) {
     this.currentSelection = algorithms[0].function;
     this.map = new WeakMap();
 
     const pathfindingChoicesElement = document.createElement('div');
-    pathfindingChoicesElement.className = 'path-choices';
+    pathfindingChoicesElement.className = groupClass;
 
     for (let algorithm of algorithms) {
       const pathfindingAlgorithmElement = document.createElement('div');
       this.map.set(algorithm.function, pathfindingAlgorithmElement);
       pathfindingAlgorithmElement.textContent = algorithm.name;
-      pathfindingAlgorithmElement.classList = 'path-choice';
+      pathfindingAlgorithmElement.classList = choiceClass;
       if (algorithm.function === this.currentSelection)
         pathfindingAlgorithmElement.classList.add('selected');
       pathfindingAlgorithmElement.addEventListener(

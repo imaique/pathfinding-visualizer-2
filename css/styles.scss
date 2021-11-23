@@ -55,14 +55,14 @@ table {
     opacity: 0.75;
   }
 }
-.path-select {
+.algo-select {
   display: flex;
   width: 100%;
   font-weight: bold;
   background-color: #f1faee;
 }
 .select-title,
-.path-choice {
+.algo-choice {
   text-align: center;
   border-radius: 10px;
   padding: 10px;
@@ -75,11 +75,11 @@ table {
   background-color: #1b9aaa;
 }
 
-.path-choices {
+.algo-choices {
   width: 100%;
   display: flex;
 }
-.path-choice {
+.algo-choice {
   color: #073b4c;
   cursor: pointer;
   position: relative;

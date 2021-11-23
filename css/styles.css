@@ -51,7 +51,7 @@ table {
   opacity: 0.75;
 }
 
-.path-select {
+.algo-select {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -61,7 +61,7 @@ table {
 }
 
 .select-title,
-.path-choice {
+.algo-choice {
   text-align: center;
   border-radius: 10px;
   padding: 10px;
@@ -74,14 +74,14 @@ table {
   background-color: #1b9aaa;
 }
 
-.path-choices {
+.algo-choices {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.path-choice {
+.algo-choice {
   color: #073b4c;
   cursor: pointer;
   position: relative;
@@ -89,7 +89,7 @@ table {
   margin-left: 10px;
 }
 
-.path-choice.selected {
+.algo-choice.selected {
   background-color: #06d6a0;
 }
 /*# sourceMappingURL=styles.css.map */
