@@ -19,19 +19,19 @@ class Board {
   async visualize(visitedOrder, takenPath) {
     if (this.isAnimating) return;
     if (this.previouslyVisitedNodes !== null) this.cleanUpVisitedNodes();
-    this.isAnimating = true;
+
     this.previouslyVisitedNodes = visitedOrder;
 
     await this.visualizeList(visitedOrder, NodeStates.visited);
     await this.visualizeList(takenPath, NodeStates.path);
-
-    this.isAnimating = false;
   }
 
   visualizeList(visitedOrder, state) {
     return new Promise((resolve) => {
+      this.isAnimating = true;
       let index = 0;
       if (visitedOrder.length == 0) {
+        this.isAnimating = false;
         resolve();
         return;
       }
@@ -48,6 +48,8 @@ class Board {
         }
         if (index === visitedOrder.length) {
           clearInterval(interval);
+
+          this.isAnimating = false;
           resolve();
         }
       }, 10);
