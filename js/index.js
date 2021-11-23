@@ -8,19 +8,25 @@ import PathAlgorithmSelect from './classes/PathAlgorithmSelect.js';
 import { randomDFS } from './algorithms/maze-generating/randomDFS.js';
 import NodeStates from './enums/NodeStates.js';
 import randomKruskal from './algorithms/maze-generating/randomKruskal.js';
+import MazeAlgorithmSelect from './classes/MazeAlgorithmSelect.js';
 
 const algorithms = [
   { name: 'A* Algorithm', function: astar },
-  { name: "Dijkstra's algorithm", function: djikstra },
+  { name: "Dijkstra's Algorithm", function: djikstra },
   { name: 'Greedy Best-First Search', function: greedy },
   { name: 'Breadth-First Search', function: bfs },
   { name: 'Depth-First Search', function: dfs },
+];
+
+const mazeAlgorithms = [
+  { name: 'None', function: null },
+  { name: "Randomized Kruskal's Algorithm", function: randomKruskal },
+  { name: 'Randomized Depth-First Search', function: randomDFS },
 ];
 const selectGroupClass = 'algo-choices';
 const selectChoiceClass = 'algo-choice';
 
 document.getElementById('visualize').addEventListener('click', visualize);
-document.getElementById('maze').addEventListener('click', generate);
 
 const board = new Board(61, 27);
 const boardContainer = document.getElementById('container');
@@ -31,10 +37,18 @@ const pathChoices = new PathAlgorithmSelect(
   selectGroupClass,
   selectChoiceClass
 );
-const pathfindingSelectElement = document.getElementById('algo-select');
+const pathfindingSelectElement = document.getElementById('path-select');
 pathfindingSelectElement.appendChild(pathChoices.DOMElement);
 
-const mazeChoices = new MazeAlgorithmSelect();
+const mazeChoices = new MazeAlgorithmSelect(
+  mazeAlgorithms,
+  board,
+  selectGroupClass,
+  selectChoiceClass
+);
+
+const mazeSelectElement = document.getElementById('maze-select');
+mazeSelectElement.appendChild(mazeChoices.DOMElement);
 
 function generate() {
   const start = { y: board.startNode.y, x: board.startNode.x };
