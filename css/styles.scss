@@ -6,23 +6,36 @@ $wall: #616163;
 $start: #44ffd2;
 $end: #ea7317;
 */
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
-    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  text-align: center;
-}
-
-.visualize {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
 $unvisited: transparent;
 $visited: #118ab2;
 $path: #ffd166;
 $wall: #616163;
 $start: #06d6a0;
 $end: #ef476f;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  text-align: center;
+}
+button {
+  all: unset;
+
+  cursor: pointer;
+}
+.visualize {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: $path;
+  font-weight: bold;
+  width: 10%;
+  padding: 10px;
+  border-radius: 10px;
+  border: solid $wall;
+
+  &:hover {
+    filter: brightness(85%);
+  }
+}
 
 table {
   border-collapse: collapse;
@@ -62,12 +75,6 @@ table {
   font-weight: bold;
   background-color: #f1faee;
 }
-.select-title,
-.algo-choice {
-  text-align: center;
-  border-radius: 10px;
-  padding: 10px;
-}
 
 .select-title {
   color: #e0eff5;
@@ -82,7 +89,6 @@ table {
 }
 .algo-choice {
   color: #073b4c;
-  cursor: pointer;
   position: relative;
   width: 100%;
   margin-left: 10px;
@@ -90,4 +96,10 @@ table {
   &.selected {
     background-color: $start;
   }
+}
+.select-title,
+.algo-choice {
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
 }

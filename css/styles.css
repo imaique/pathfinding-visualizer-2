@@ -11,9 +11,25 @@ body {
   text-align: center;
 }
 
+button {
+  all: unset;
+  cursor: pointer;
+}
+
 .visualize {
   margin-top: 10px;
   margin-bottom: 10px;
+  background-color: #ffd166;
+  font-weight: bold;
+  width: 10%;
+  padding: 10px;
+  border-radius: 10px;
+  border: solid #616163;
+}
+
+.visualize:hover {
+  -webkit-filter: brightness(85%);
+          filter: brightness(85%);
 }
 
 table {
@@ -61,13 +77,6 @@ table {
   background-color: #f1faee;
 }
 
-.select-title,
-.algo-choice {
-  text-align: center;
-  border-radius: 10px;
-  padding: 10px;
-}
-
 .select-title {
   color: #e0eff5;
   width: 300px;
@@ -84,7 +93,6 @@ table {
 
 .algo-choice {
   color: #073b4c;
-  cursor: pointer;
   position: relative;
   width: 100%;
   margin-left: 10px;
@@ -92,5 +100,12 @@ table {
 
 .algo-choice.selected {
   background-color: #06d6a0;
+}
+
+.select-title,
+.algo-choice {
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
 }
 /*# sourceMappingURL=styles.css.map */

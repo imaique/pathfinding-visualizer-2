@@ -7,7 +7,7 @@ class PathAlgorithmSelect {
     pathfindingChoicesElement.className = groupClass;
 
     for (let algorithm of algorithms) {
-      const pathfindingAlgorithmElement = document.createElement('div');
+      const pathfindingAlgorithmElement = document.createElement('button');
       this.map.set(algorithm.function, pathfindingAlgorithmElement);
       pathfindingAlgorithmElement.textContent = algorithm.name;
       pathfindingAlgorithmElement.classList = choiceClass;
