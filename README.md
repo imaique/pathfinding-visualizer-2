@@ -15,6 +15,8 @@ This project was heavily inspired by [Clement Mihailescu's Pathfinding Visualize
 ## Maze-Generating Algorithms
 
 - **[Randomized Depth-First Search](https://en.wikipedia.org/wiki/Maze_generation_algorithm#Randomized_depth-first_search)**
+- **[Randomized Kruskal's algorithm](https://en.wikipedia.org/wiki/Maze_generation_algorithm#Randomized_Kruskal's_algorithm)**
+- **[Randomized Prim's algorithm](https://en.wikipedia.org/wiki/Maze_generation_algorithm#Randomized_Prim's_algorithm)**
   <br><br>
 
 **_NOTE:_** I first attempted to complete this project using React. Unfortunately, changing the state of a cell of a matrix bottle necked the visualization. You can still have a look at the repository of the attempt [here](https://github.com/imaique/pathfinding-visualizer).
