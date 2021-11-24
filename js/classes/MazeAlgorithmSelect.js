@@ -21,8 +21,6 @@ class MazeAlgorithmSelect {
       this.map.set(mazeAlgorithmElement, algorithm.function);
       mazeAlgorithmElement.textContent = algorithm.name;
       mazeAlgorithmElement.classList = choiceClass;
-      console.log(algorithm.function);
-      console.log(algorithm.function === null);
       if (algorithm.function === null) {
         this.currentSelectedElement = mazeAlgorithmElement;
         mazeAlgorithmElement.classList.add('selected');
