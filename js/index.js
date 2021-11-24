@@ -9,6 +9,7 @@ import { randomDFS } from './algorithms/maze-generating/randomDFS.js';
 import NodeStates from './enums/NodeStates.js';
 import randomKruskal from './algorithms/maze-generating/randomKruskal.js';
 import MazeAlgorithmSelect from './classes/MazeAlgorithmSelect.js';
+import { randomPrim } from './algorithms/maze-generating/randomPrim.js';
 
 const algorithms = [
   { name: 'A* Algorithm', function: astar },
@@ -20,15 +21,16 @@ const algorithms = [
 
 const mazeAlgorithms = [
   { name: 'None', function: null },
-  { name: "Randomized Kruskal's Algorithm", function: randomKruskal },
   { name: 'Randomized Depth-First Search', function: randomDFS },
+  { name: "Randomized Kruskal's Algorithm", function: randomKruskal },
+  { name: "Randomized Prim's Algorithm", function: randomPrim },
 ];
 const selectGroupClass = 'algo-choices';
 const selectChoiceClass = 'algo-choice';
 
 document.getElementById('visualize').addEventListener('click', visualize);
 
-const board = new Board(61, 27);
+const board = new Board(69, 27);
 const boardContainer = document.getElementById('container');
 boardContainer.appendChild(board.DOMElement);
 

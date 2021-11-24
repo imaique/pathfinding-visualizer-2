@@ -5,7 +5,6 @@ import { shuffle, isValidWall } from '../shared.js';
 const randomKruskal = (start, grid) => {
   let walls = [];
   let sets = [];
-  console.log(grid);
   for (let i = 0; i < grid.length; i++) {
     let setRow = new Array(grid[i].length);
     /* 
