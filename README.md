@@ -9,8 +9,8 @@ This project was heavily inspired by [Clement Mihailescu's Pathfinding Visualize
 - **[A\* Algorithm](https://en.wikipedia.org/wiki/A*_search_algorithm)**
 - **[Dijkstra's algorithm](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)**
 - **[Greedy Best-First Search](https://en.wikipedia.org/wiki/Best-first_search)**
-- **[Breadth-First Search (BFS)](https://en.wikipedia.org/wiki/Breadth-first_search)**
-- **[Depth-First Search (DFS)](https://en.wikipedia.org/wiki/Depth-first_search)**
+- **[Breadth-First Search](https://en.wikipedia.org/wiki/Breadth-first_search)**
+- **[Depth-First Search](https://en.wikipedia.org/wiki/Depth-first_search)**
 
 ## Maze-Generating Algorithms
 
