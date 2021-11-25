@@ -17,7 +17,7 @@ const isWithinBounds = (x, y, grid) => {
   return x >= 0 && x < grid[0].length && y >= 0 && y < grid.length;
 };
 
-const isOuterBoard = (x, y, grid) => {
+export const isOuterBoard = (x, y, grid) => {
   return (
     x === 0 || y === 0 || y === grid.length - 1 || x === grid[0].length - 1
   );
