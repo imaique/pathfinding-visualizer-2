@@ -1,7 +1,7 @@
 import { getKey, getNeighborIncrements, isValidWall } from '../shared.js';
 import RandomQueue from '../../data_structures/RandomQueue.js';
 
-export const randomPrim = (start, grid) => {
+export const randomPrim = (start, end, grid) => {
   const neighbors = getNeighborIncrements(false);
   const queue = new RandomQueue();
   for (let neighbor of neighbors) {
@@ -18,9 +18,7 @@ export const randomPrim = (start, grid) => {
   const visitedOrder = [];
 
   while (!queue.isEmpty()) {
-    console.log(queue);
     const wall = queue.dequeue();
-    console.log(wall);
     const first = wall.horizontal
       ? { x: wall.x - 1, y: wall.y }
       : { x: wall.x, y: wall.y - 1 };

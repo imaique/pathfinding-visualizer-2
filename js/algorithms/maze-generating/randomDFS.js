@@ -7,7 +7,7 @@ import {
   isValidWall,
 } from '../shared.js';
 
-export const randomDFS = (start, grid) => {
+export const randomDFS = (start, end, grid) => {
   const neighbors = getNeighborIncrements(false);
   const stack = new Stack();
   const visited = new Set();

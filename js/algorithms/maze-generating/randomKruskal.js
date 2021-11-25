@@ -2,7 +2,7 @@ import DisjointSet from '../../data_structures/DisjointSet.js';
 
 import { shuffle, isValidWall } from '../shared.js';
 
-const randomKruskal = (start, grid) => {
+const randomKruskal = (start, end, grid) => {
   let walls = [];
   let sets = [];
   for (let i = 0; i < grid.length; i++) {
