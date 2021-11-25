@@ -17,7 +17,7 @@ class MazeAlgorithmSelect {
     */
 
     for (let algorithm of algorithms) {
-      const mazeAlgorithmElement = document.createElement('div');
+      const mazeAlgorithmElement = document.createElement('button');
       this.map.set(mazeAlgorithmElement, algorithm.function);
       mazeAlgorithmElement.textContent = algorithm.name;
       mazeAlgorithmElement.classList = choiceClass;
@@ -50,8 +50,9 @@ class MazeAlgorithmSelect {
   generateMaze(algorithm) {
     const board = this.board;
     const start = { y: board.startNode.y, x: board.startNode.x };
+    const end = { y: board.endNode.y, x: board.endNode.x };
     board.setBoardToState(NodeStates.wall);
-    const visitedOrder = algorithm(start, board.grid);
+    const visitedOrder = algorithm(start, end, board.grid);
     board.visualizeList(visitedOrder, NodeStates.unvisited);
   }
 }
