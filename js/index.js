@@ -10,6 +10,7 @@ import NodeStates from './enums/NodeStates.js';
 import randomKruskal from './algorithms/maze-generating/randomKruskal.js';
 import MazeAlgorithmSelect from './classes/MazeAlgorithmSelect.js';
 import { randomPrim } from './algorithms/maze-generating/randomPrim.js';
+import { aldous } from './algorithms/maze-generating/aldous.js';
 
 const algorithms = [
   { name: 'A* Algorithm', function: astar },
@@ -24,6 +25,7 @@ const mazeAlgorithms = [
   { name: 'Randomized Depth-First Search', function: randomDFS },
   { name: "Randomized Kruskal's Algorithm", function: randomKruskal },
   { name: "Randomized Prim's Algorithm", function: randomPrim },
+  { name: 'Aldous-Broder Algorithm', function: aldous },
 ];
 const selectGroupClass = 'algo-choices';
 const selectChoiceClass = 'algo-choice';
@@ -51,14 +53,6 @@ const mazeChoices = new MazeAlgorithmSelect(
 
 const mazeSelectElement = document.getElementById('maze-select');
 mazeSelectElement.appendChild(mazeChoices.DOMElement);
-
-function generate() {
-  const start = { y: board.startNode.y, x: board.startNode.x };
-  const end = { y: board.endNode.y, x: board.endNode.x };
-  board.setBoardToState(NodeStates.wall);
-  const visitedOrder = randomKruskal(start, board.grid);
-  board.visualizeList(visitedOrder, NodeStates.unvisited);
-}
 
 function visualize() {
   const start = { y: board.startNode.y, x: board.startNode.x };
