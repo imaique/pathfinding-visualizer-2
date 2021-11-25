@@ -35,6 +35,7 @@ button {
 table {
   border-collapse: collapse;
   margin: auto;
+  border: solid black;
 }
 
 .node {
