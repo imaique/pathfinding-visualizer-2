@@ -45,6 +45,11 @@ export const astar = (start, end, grid, isDiagonalNeighbors) => {
         const key = getKey(neighbor);
         if (!visited.has(key) || visited.get(key) > neighbor.cost) {
           const distanceFromEnd = Math.sqrt(x * x + y * y);
+          /*
+            const distanceFromEnd = isDiagonalNeighbors
+            ? Math.sqrt(x * x + y * y)
+            : x + y;
+          */
           queue.push(neighbor, neighbor.cost + distanceFromEnd);
           visited.set(key, neighbor.cost);
         }
